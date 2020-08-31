@@ -1,0 +1,31 @@
+image: node:14.3.0
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+  - npm install
+  - npm run build 
+
+test:
+  stage: test
+  script: 
+  - npm install
+  - npm run test
+
+deploy:
+  stage: deploy
+  script:
+  - npm install
+  - npm run build
+  - rm -rf public
+  - mv build public
+  artifacts:
+    paths:
+    - public # mandatory, other folder won't work
+  only:
+  - master # or dev, the branch you want to publish
