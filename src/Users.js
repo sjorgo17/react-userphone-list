@@ -55,6 +55,7 @@ const handlePageChange = page => {
 const handleOrderChange = (column, sortDirection) => {
   setOrder(column.selector);
   setSortMod(sortDirection);
+  console.log(sortDirection);
 };
 
 const handlePerRowsChange = newPerPage => {
@@ -86,8 +87,8 @@ function PhoneNumbers(props) {
   return (
     <table >
       <tbody>
-        {props.numbers.map(number=>
-          <tr key={number.id}>
+        {props.numbers.map((number,idx)=>
+          <tr key={idx}>
             <td className="type"><b>{number.type}</b></td>
             <td className="phone">{number.phoneNumber}</td>
           </tr>)}

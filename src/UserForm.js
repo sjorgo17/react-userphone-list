@@ -155,12 +155,13 @@ async function addUser(){
         body: JSON.stringify(user)
     });
 
-    user_response.json().then(data =>{
-        if (data.success===true){
-            alert("User saved!");
-            window.location.reload();
-        }
-    });  
+    if (user_response.ok){
+        alert("User saved!");
+        window.location.reload();
+    }else if (!user_response.ok){
+        alert("Something went wrong :( Please try again!");
+    }
+    
     }
     
 };
